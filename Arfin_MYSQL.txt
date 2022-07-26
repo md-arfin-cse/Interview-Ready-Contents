@@ -1,0 +1,632 @@
+
+#0.Syntax of Create,Select,Show,Drop Database:-
+
+1.Create Database
+  Syntax:- Create database database_name;
+   EX:-    Create database School;
+   
+2. Select Database
+   Syntax:  Use Database_Name;
+   Ex-      Use School;
+
+3. Show Database
+   Syntax: Show Database;
+
+4. Drop Database 
+   Syntax: Drop Database Database_name;
+   Exampl: Drop Database School;
+
+5. Drop Table 
+   Syntax: Drop Table Table_Name;
+
+6. Alter Table Statement 
+-> This Staement is used to Add, Delete, or Modify columns in an Existing Table.
+-> This is also used to Add and Drop Various Constraints on an Existing Tables.
+
+-> 1. Add Columns:
+Syntax:  Alter Table Table_Name,
+         Add Column_name data_type;
+
+Example: Alter Table Table_Name,
+         Add Email varchar(255);
+
+-> 2. Drop Column:
+Syntax: Alter Table Table_name,
+        Drop Column_name;
+
+Example: Alter Table EmployeeDB,
+         Drop Email;
+         
+
+#1.Create Table Statement:
+
+-> Syntax:
+
+    Create Table Table_Name(
+    Column1 datatype,
+    Column2 datatype,
+    Column3 datatype,
+-----------------------
+   );
+
+-> Example: 
+  
+   Create Table EmloyeeDB(
+   ID int not null Auto_Increment Primary key,
+   Emp_Name varchar(30) Not Null,
+   Address varchar(255) Not null,
+   City varchar(50) Not null,
+   Age int Not null,
+   DOJ date Not null,
+   Designation varchar(50) Not Null,
+   Moblie varchar(10) Not null);
+
+-> Note: Auto_Increment means - Apne Aap Serial No. Aa Jayega.
+
+#2. MySQL Insert Staement: 
+
+-> Syntax:
+   
+     Insert Into Table_Name (Column1. Column2, Column3, -----ColumnN)
+     Values (Value1, Value2, Value3, -------- ValueN);
+
+-> Example:
+    
+      Insert Into EmployeeDB (Emp_Name, Address, City , Age, DOJ, Designation, Salary, Mobile)
+      values ('Mohit kumar' , 'pk nagar Jabalpur', 'Jabalpur' , '18', ' 2020-08-20', 'CSE Engineer' , 90000 , '8804216585');
+
+
+    
+ -> Output:
+    Select * From EmployeeDB;
+
+-> Note: Execute and Run it.
+
+#3. SQL Select Statement: 
+
+-> The Select Statement is used to Selecting (Showing) the data From a Table .
+
+1. To Selecting Whole data from Table.
+  
+  Syntax: Select * from Table_Name;
+  Example: Select * From EmployeeDB;
+
+2. To Selecting One or Two data from Table:
+
+  Syntax: Select column1, column2, column3, columnN From table_name;
+  Example: Select Emp_Name, Mobile From EmployeeDB;
+
+#4. The SQL Where Clause:
+
+-> The Where clause is used to filter Records from Table.
+
+Syntax: Select Column1 , Column2, ColumnN
+        From Table_Name
+        Where Designation = [Condition];
+
+Example: Select Emp_Name , Mobile
+         From EmployeeDB
+         Where Designation = 'Programmer';
+
+#5. The SQL Update:
+
+-> If you want to modify the EXisting records ina table then you can use the query.
+
+Syntax: Update Table_Name
+        Set Column1 = value 1, column2 = value2--
+        Where [Condition];
+
+Example1: Update EmployeeDB
+         Set Address = 
+         Where [Condition]
+
+Example2: Update EmployeeDB
+          Set Address = 'P79, Block no. 5' 
+          Where ID = 4;
+
+Example3: Update EmployeeDB
+          Set Salary = 45000
+          Where Id = 5;
+
+Example4: Update EmployeeDB
+          Set Emp_Name= 'Rajesh kumar'
+          Where ID = 5;
+
+#6. The SQL Delete:
+ 
+-> The Sql delete query is used to delete the existing records from a table.
+
+Syntax: Delete From Table_Name
+        Where [Condition]
+
+Example: Delete From EmplyeeDB
+         Where ID = 5;
+
+NOTE: If You want to delete all records from table then you can use:-
+      
+Syntax: Delete From Table_Name;
+
+#7. The SQL AND Operator:
+
+-> You can use this Operator for Checking multiple Conditions.
+
+Syntax: Select Column1, Column2, ---
+        From table_name
+        Where[Condition1] AND [Condition2] --- AND [ConditionN];
+
+Example1: Select ID, Emp_Name
+         From EmployeeDB
+         Where Designation = 'Programmer' AND Age>30;
+
+Example2: Select ID, Emp_Name
+          From EmployeeDB
+          Where Designation = 'Programmer' AND City = 'Jaipur';
+
+#8. The SQL OR Operator:
+
+Syntax: Select Column1, Column2,----
+        From Table_Name 
+        Where [Condition1] OR [Condition2] --- OR [ConditionN];
+
+Example: Select ID, Emp_Name, City
+         From EmployeeDB
+         Where City = 'Jaipur' OR Salary = 42000;
+  
+Note: Salary or 42000;
+
+#9. The SQL NOT Operator
+    
+Syntax: Select Column1, Column1 ----
+        From Table_Name 
+        Where Not Condition;
+
+Example: Select ID, Emp_Name, City
+         From EmployeeDB
+         Where NOT City = 'Jaipur';
+
+Note: Jiski City JAIPUR nahi hai.
+
+#10. The SQL Like Operator:
+
+-> The like Operator is used ina WHERE CLAUSE to Search for a specified pattern ina column.
+-> The Percent sign (%) represents zero , one or multiple charcters .
+-> The underscore sign (_) represents one, single characters.
+
+Syntax: Select Column1, Column2 , -----
+        From Table_Name
+        Where Column N like Pattern;
+
+Example1: Select * from EmployeeDB  [% -> Start With]
+         Where City Like 'j%';     [%L -> Last With]
+
+Note: [Start With ] you Can't also use [End with Like -%J]
+
+Example2: Select * from EmployeeDB
+          Where Emp_Name Like 'k%';
+
+Example3: Select * from EmployeeDB
+          Where Emp_Name Like '%l';
+
+Example4: Select * from EmployeeDB
+          Where Emp_Name Like '__8%';
+
+Example5: Select * from EmployeeDB
+          Where Emp_Name Not Like 'm%';
+
+Note: Jiske NAME me m Start NAHI Hoga Usko Print Karega.
+
+#11. The SQL IN Opeartor:
+
+Example1: Select * from EmployeeDB
+         Where City IN ('Udaipur', 'Ajmer');
+
+Example2: Select * from EmployeeDB
+         Where City NOT IN ('Udaipur', 'Ajmer');
+
+Example3: Select * from EmployeeDB
+         Where Designation IN ('Programmer');
+
+#12. The SQL BETWEEN Opearator:
+
+-> The BETWEEN OPERATOR selects values with in a given range.
+
+Example1: Select * from EmployeeDB
+          Where Salary Between 3000 AND 50000;
+
+Example2: Select * from EmployeeDB
+          Where ID Between 3 AND 5;
+
+Example1: Select * from EmployeeDB
+          Where DOJ Between '2021-01-01' AND '2021-05-30';
+
+#12. The SQL Select Top Clause:
+
+-> Select Top CLAUSE is used to show specify the number of records from table.
+
+Note: Not all database systems support the select Top Clause.
+
+-> MYSQL Supports the limit clause.
+
+Syntax: Select Top Number1 Percent Column_name(s)
+        From Table_name
+        Where [Condition];
+
+       ->(Note: Only For MySQL)
+Example: Select * from EmployeeDB
+         Limit 3;
+
+Note: 1 se 3 tak Output dega.
+
+#13. The SQL ORDER BY CLAUSE:
+
+-> The SQL Order By Clause is used to Sort the column data in Ascending or Descending order.
+
+Example1: Select * From EmployeeDB
+          Order By Emp_Name, Salary;
+
+Example2: Select * From EmployeeDB
+          Order By Emp_Name, DESC;
+
+#14. Working with SQL Functions:
+
+-->   Count()
+
+Example: Select Count(Emp_Name)
+          From EmployeeDB;
+ 
+Note: Kitne Record hai Record = 5
+
+--> Sum()
+
+Example: Select Sum(Salary)
+          From EmployeeDB;
+
+Note: Total Salary Ka Sum.
+
+--> AVG()
+
+Example: Select AVG(Salary)
+         From EmployeeDB;
+
+--> Min()
+
+Example: Emp_name, MIN(Salary) AS Lowest Salary
+         From EmployeeDB;
+
+--> Max()
+
+Example:  Emp_name, MAX(Salary) AS Highest Salary
+          From EmployeeDB;
+
+#15. SQL Joins:
+
+-> The SQL Joins clause is used to combine records from two or more tables.
+
+Examples: Create Database CompanyDB;  - New DB add karna hai
+          Use CompanyDB;              - Aur Use karna Hai
+
+
+-> Create a new Table:
+
+     Create Table Customer(
+     Customer_ID int Primary key, 
+     Customer varchar(20),
+     City varchar(20) 
+     );
+
+-> Insert Customers Values:
+
+ Insert into customer values(101, 'Arfin', 'Kota');
+ Insert into customer values(102, 'Ajay', 'Kota');
+ Insert into customer values(103, 'Arfin', 'Kota');
+ Insert into customer values(104, 'Arfin', 'Kota');
+ Insert into customer values(105, 'Arfin', 'Kota');
+ Insert into customer values(106, 'Arfin', 'Kota');
+ Insert into customer values(107, 'Arfin', 'Kota');
+ Insert into customer values(108, 'Arfin', 'Kota');
+ Insert into customer values(109, 'Arfin', 'Kota');
+ Insert into customer values(110, 'Arfin', 'Kota');
+
+-> Create a new Table Orders:
+
+   Create a Table Orders (
+   OrderID int,
+   CustomerID int Primary Key,
+   Order Date date
+   );
+
+Insert Into Order Values(1, 101, '2021-01-05);
+Insert Into Order Values(2, 101, '2021-01-05);
+Insert Into Order Values(3, 101, '2021-01-05);
+Insert Into Order Values(4, 101, '2021-01-05);
+Insert Into Order Values(5, 101, '2021-01-05);
+Insert Into Order Values(6, 101, '2021-01-05);
+Insert Into Order Values(7, 101, '2021-01-05);
+Insert Into Order Values(8, 101, '2021-01-05);
+Insert Into Order Values(9, 101, '2021-01-05);
+Insert Into Order Values(10, 101, '2021-01-05);
+
+o/p: Select * from Orders 
+
+Note: Join Main Dono ID ke andar Ek field hona jrori hai
+
+-> Inner Join Query1: 
+   
+   Select Orders.OrderID, Customer.CustomerName, Orders.OrderDate
+   From Orders
+   Inner Join Customer On Orders.CustomerID = Customer.CustomerID;
+
+-> Inner Join Query2: 
+
+   Select Orders.OrderDate, Customer.City
+   From Orders
+   Inner Join Customer On Orders.CustomerID = Customer.CustomerID;
+
+-> Note: Some Other SQL JOINS Like:-
+       Left Join, Right Join, Full Join, And Self Join , You Can Read From Google.
+
+#16. The SQL Group BY:
+     
+-> The Group By Statements groups rows that have the same values into rows we can also use these functions.
+
+ [Count(), Max(), MIN(), SUM(),AVG()]
+
+With the group by statements
+
+-> Syntax:
+       
+     Select Column_name(s)
+     from table_name
+     where Condition
+     Group By Column_name(s);
+
+-> Example:
+   
+    Select Count(Designation), SUM(Salary), Designation
+    From EmployeeDB
+    Group By Designation;
+
+#17. SQL INSERT into Select Statement you can copies data from one table and inserts it into another table.
+
+-> Syntax:
+   
+    Insert Into EmployeeNew_Table
+    Select * From old_Table
+    Where conditions;
+
+-> Examples: 
+ 
+     Insert Into EmployeeInfoBackup
+      Select * From EmployeeInfo;
+     
+-> New Table Creating:
+
+     Create Table EmployeeInfoBackup(
+     ID int not null Auto_increment Primary key,
+     Emp_name Varchar(30) Not null,
+     Address varchar(255) Not null,
+     City varchar(50) Not null,
+     Age int Not null,
+     Doj date Not null,
+     Designation varchar(50) not null,
+     Salary decimal(5,2) Not null,
+     Mobile varchar(10) Not null;
+
+i/p:- Select * from EmployeeInfoBackup; 
+     
+
+-> Insert
+   
+    Insert into EmployeeInfoBackup
+    Select * from EmployeeInfo; 
+
+
+   Execute it.
+
+i/p:- Select * from EmployeeInfoBackup; 
+
+Note: EmployeeInfo ka data EmployeeInfoBackup me copy ho jayega.
+
+#18. The SQL TRUNCATE Table Command:
+
+-> If you want to delete complete data from an existing table then you can use DROP TABLE Command it would remove complete table structure from the database.
+
+Syntax: 
+        Truncate Table Table_name;
+
+Note: Only Table not whole Structure 
+
+Syntax:
+        Drop Table table_name;
+
+Note: Whole Table & Structures are delete. 
+
+#18. SQL Constraints: 
+
+-> By using SQL CONSTRAINTS you can set specify rules for the data in a table .
+
+-> The following Constraints are commonly used in SQL.
+   
+(1). NOT NUL Constraints Ensure that a column value should not null.
+
+-> Example of NOT NULL Constraints:
+
+Step1: Create a new Database
+
+ Create Database ConstraintsExample;
+
+      ExecuteIT
+
+Step2: Select This Database
+
+ Use ConstraintsExample;
+
+     Executeit
+
+Step3: Create Table
+
+ Create Table not null Example(
+   Emp_Name varchar(30),
+   Age int,
+ );
+
+    Execute it.
+ 
+ select * from not null Example;
+
+NOTE: not null name, age , include karna mandatory hai
+
+Step4: Inserts Records
+
+  Insert into notnullExample(Emp_Name, Age) Values ('Raju' , 26), (Age) values (26);
+
+(2). Default Constraints: Set a default value for a column if no value is inserting.
+
+-> Example of Default Constraints:
+
+Step1: Create Table defaultExample(
+       
+       Emp_name varchar(30) NOT NULL,
+       Age int,
+       Mobile varchar(50) default 'Mobile no. is not available);
+
+    Exeute it
+            
+         Select * from defaultExample;
+
+Step2: Insert Data:
+
+  Insert Into defaultExample(Emp_Name, Age) values ('Sumit' , 27);
+
+(3). Check Constraints: You can define a check constraints on a column it will allow allow only certain values for this column. If Condition is matched then values will store in column.
+
+Step1: Create Table:
+
+     Create Table CheckExample(
+     Emp_Name varchar(255),
+     Age int,
+     Check(Age >= 18) 
+     );
+
+Note: Age 18 se chota mhi hona chaiye..Bada hi kaam karega.
+
+Step2: Insert Record
+
+     Insert Into CheckExample(Emp_Name , Age)
+      values
+    ('Raju' , 26);
+
+   
+     Insert int CheckExample(Emp_Name,Age)
+      values
+     ('Sunil', 17);
+
+Note: Nahi hoga 18 year se chota hai bada hona chaiye.
+
+
+(4). Unique Constraints: The UNIQUE constraints ensures that all values in a column are different.
+
+-> Example of UNIQUE Constraints
+
+Step1: Create a Table
+
+        Create Table UniqueEXample(
+        Emp_Name varchar(255) NOT NULL,
+        Mobile varchar(10) NOT NULL UNIQUE
+        );
+
+Step2: Insert Records
+ 
+        Insert into UniqueExample(Emp_NAME,MOBILE) Values ('Raju' , '01234567879');
+
+        Insert into UniqueExample(Emp_NAME,MOBILE) Values ('Manoj' , '01234567879');
+
+Note: This is a duplicate Entry 
+
+      Mobile no. 2 times Entry ho gaya hai.
+
+(5). Primary key Constraints: Primary key columns must contain unique values , and cannot contain NULL VALUES.
+
+(6). SQL Foreign key Constraints 
+
+Step1: Create Table 
+
+        Create Table Department(
+        Dept_id int Primary key, Dept_Name varchar(50)
+        );
+
+Step2: Insert Records
+
+        Insert into Department Values(1, 'Accountant');
+        Insert into Department Values(2, 'HR');
+        Insert into Department Values(3, 'IT');
+
+Note: Primary key duplicate entry se error hoga.
+
+Step3: Create 2nd Table
+ 
+       Create Table Employees_Details(
+       Emp_ID INT Primary key,
+       Emp_NAME Varchar(50),
+       Dept_id varchar(50) not null,
+       Dept_id int,
+       foreign key(Dept_id) Refreances Department(Dept_id)
+       );
+
+Step4: Inserts Records
+    
+        Insert into Employee_Details values(1, 'Raj' , 1);
+        Insert into Employee_Details values(2, 'Rahul' , 2);
+        Insert into Employee_Details values(3, 'Ram' , 3);
+
+   Select * from Employee_Details;
+
+
+note:   Insert into Employee_Details values(4, 'Raj' , 4); 
+
+-> ye record add nhi hoga kyuki foreign key laga hua hai.
+
+
+
+    Insert into Employee_Details values(4, 'RajU' , 1);
+
+    Select * from Employee_Details;
+
+
+
+
+   
+
+
+
+
+
+
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+ 
+
+
